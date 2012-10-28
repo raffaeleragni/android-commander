@@ -6,11 +6,21 @@
         <name>Shutdown server X</name>
         <description>Shuts down the X server through SSH halt command</description>
         <target>10.0.0.2</target>
-        <command><![CDATA[sudo halt]]></command>
+        <command-string><![CDATA[sudo halt]]></command-string>
         <icon-location>icons/shutdown_X.png</icon-location>
         <private-key-location>keys/mypk</private-key-location>
         <private-key-passphrase>bingo</private-key-passphrase>
         <login-username>user</login-username>
+    </command>
+    
+    <command type="ssh" auth="login" risk="dangerous">
+        <name>Wipe X data</name>
+        <description>Wipes a certain data directory of a user on a remote server</description>
+        <target>10.0.0.3</target>
+        <command-string><![CDATA[cd ~ && rm -rf mydirectory]]></command-string>
+        <icon-location>icons/wipe_data_user.png</icon-location>
+        <login-username>user</login-username>
+        <login-password>user</login-password>
     </command>
     
 </commander>

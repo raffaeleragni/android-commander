@@ -43,7 +43,7 @@
                 <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
                 <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
                 <xs:element name="target" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="command" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="command-string" minOccurs="0" maxOccurs="1" type="xs:string"/>
                 <xs:element name="command-script-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
                 <xs:element name="icon-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
                 <xs:element name="private-key-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
@@ -69,7 +69,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="none"/>
             <xs:enumeration value="confirm"/>
-            <xs:enumeration value="calculation"/>
+            <xs:enumeration value="dangerous"/>
         </xs:restriction>
     </xs:simpleType>
 
