@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commander xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+           xsi:noNamespaceSchemaLocation='schema.xsd'>
+    
+    <command type="ssh" auth="private-key" risk="confirm">
+        <name>Shutdown server X</name>
+        <description>Shuts down the X server through SSH halt command</description>
+        <target>10.0.0.2</target>
+        <command><![CDATA[sudo halt]]></command>
+        <command-icon-location>icons/shutdown_X.png</command-icon-location>
+        <login-username>user</login-username>
+        <private-key-location>keys/mypk</private-key-location>
+        <private-key-passphrase>bingo</private-key-passphrase>
+    </command>
+    
+</commander>

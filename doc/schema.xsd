@@ -22,5 +22,68 @@
 <xs:schema version="1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified">
+    
+    <xs:element name="commander">
+        <xs:annotation>
+            <xs:documentation>Root element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="command" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="command">
+        <xs:annotation>
+            <xs:documentation>A batch command to execute</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="target" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="command" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="command-script-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="icon-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="private-key-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="private-key-passphrase" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="login-username" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="login-password" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="risk" type="command-risk" use="required"/>
+            <xs:attribute name="type" type="command-type" use="required"/>
+            <xs:attribute name="auth" type="command-auth" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="command-risk">
+        <xs:annotation>
+            <xs:documentation>
+                The risk of the command.
+                0 = no confirmation,
+                1 = normal confirmation (ok/cancel),
+                2 = complex confirmation
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="confirm"/>
+            <xs:enumeration value="calculation"/>
+        </xs:restriction>
+    </xs:simpleType>
 
+    <xs:simpleType name="command-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ssh"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="command-auth">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="login"/>
+            <xs:enumeration value="private-key"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
 </xs:schema>
