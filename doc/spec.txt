@@ -1,0 +1,10 @@
+
+* Loading a list of command/sets from xml user-defined, from SD card. Define XSD.
+* Visualize list of commands to be executed.
+* Commands markable with a level of risk (0, 1, 2) each level over 0 will prompt a message for confirmation
+* Type of commands, and each one has a different feedback system: console/terminal/ssh, web request/s, 
+* Parameters for commands: target machine, command exec, login etc.
+* Shortcuttable commands to be used with NFC tags
+* Command multitasking/multimonitoring with fragments/tabs.
+* Define private keys placement/access/passphrases from XML.
+* Why XML & plain dirs: backuppable and developable profiles from computer, no data entry form android.
