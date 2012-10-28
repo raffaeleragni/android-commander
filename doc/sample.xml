@@ -7,10 +7,10 @@
         <description>Shuts down the X server through SSH halt command</description>
         <target>10.0.0.2</target>
         <command><![CDATA[sudo halt]]></command>
-        <command-icon-location>icons/shutdown_X.png</command-icon-location>
-        <login-username>user</login-username>
+        <icon-location>icons/shutdown_X.png</icon-location>
         <private-key-location>keys/mypk</private-key-location>
         <private-key-passphrase>bingo</private-key-passphrase>
+        <login-username>user</login-username>
     </command>
     
 </commander>
