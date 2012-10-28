@@ -23,4 +23,14 @@
         <login-password>user</login-password>
     </command>
     
+    <command type="ssh" auth="login" risk="none">
+        <name>Refresh stuff</name>
+        <description>Refresh some stuff or start a maintenance script manually.</description>
+        <target>10.0.0.4</target>
+        <command-script-location>scripts/myscript.sh</command-script-location>
+        <icon-location>icons/refresh.png</icon-location>
+        <login-username>user</login-username>
+        <login-password>user</login-password>
+    </command>
+    
 </commander>
