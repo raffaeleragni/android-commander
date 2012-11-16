@@ -16,10 +16,11 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ki.commander;
+package ki.commander.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import ki.commander.R;
 
 public class Main extends Activity
 {

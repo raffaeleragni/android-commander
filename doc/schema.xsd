@@ -82,7 +82,7 @@
     <xs:simpleType name="command-auth">
         <xs:restriction base="xs:string">
             <xs:enumeration value="login"/>
-            <xs:enumeration value="private-key"/>
+            <xs:enumeration value="privatekey"/>
         </xs:restriction>
     </xs:simpleType>
     
