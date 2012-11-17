@@ -31,8 +31,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.List;
 import java.util.Random;
 import ki.commander.C;

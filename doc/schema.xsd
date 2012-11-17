@@ -42,14 +42,38 @@
             <xs:sequence>
                 <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
                 <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="target" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="command-string" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="command-script-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="icon-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="private-key-location" minOccurs="0" maxOccurs="1" type="xs:string"/>
-                <xs:element name="private-key-passphrase" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="target" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The host machine to connect to</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="command-string" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The command to execute (full path), recommended to use a CDATA section</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="command-script-location" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The location, relative to the xml file, of the script ot execute [not supported yet]</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="icon-location" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The location, relative to the xml file, of the command icon [not supported yet]</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="login-username" minOccurs="0" maxOccurs="1" type="xs:string"/>
                 <xs:element name="login-password" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <xs:element name="private-key-location" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The location, relative to the xml file, of the private key</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="private-key-passphrase" minOccurs="0" maxOccurs="1" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The passphrase to unlock the private key</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
             </xs:sequence>
             <xs:attribute name="risk" type="command-risk" use="required"/>
             <xs:attribute name="type" type="command-type" use="required"/>

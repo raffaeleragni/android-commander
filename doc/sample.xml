@@ -8,9 +8,9 @@
         <target>10.0.0.2</target>
         <command-string><![CDATA[sudo halt]]></command-string>
         <icon-location>icons/shutdown_X.png</icon-location>
+        <login-username>user</login-username>
         <private-key-location>keys/mypk</private-key-location>
         <private-key-passphrase>bingo</private-key-passphrase>
-        <login-username>user</login-username>
     </command>
     
     <command type="ssh" auth="login" risk="dangerous">
