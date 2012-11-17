@@ -7,6 +7,7 @@ package ki.commander.activity.tools;
 import android.util.Log;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.IdentityRepository;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -28,6 +29,7 @@ public class SSHManager
     private String strPassword;
     private Session sesConnection;
     private int intTimeOut;
+    private String privkey;
 
     private void doCommonConstructorActions(String userName,
         String password, String connectionIP, String knownHostsFileName)
@@ -46,6 +48,16 @@ public class SSHManager
         strUserName = userName;
         strPassword = password;
         strConnectionIP = connectionIP;
+    }
+
+    public SSHManager(String userName, String privkey, String passphrase,
+        String connectionIP, String knownHostsFileName)
+    {
+        doCommonConstructorActions(userName, passphrase,
+            connectionIP, knownHostsFileName);
+        intConnectionPort = 22;
+        intTimeOut = 60000;
+        this.privkey = privkey;
     }
 
     public SSHManager(String userName, String password,
@@ -81,9 +93,14 @@ public class SSHManager
 
         try
         {
+            if (privkey != null)
+                jschSSHChannel.addIdentity(privkey, strPassword);
+            
             sesConnection = jschSSHChannel.getSession(strUserName,
                 strConnectionIP, intConnectionPort);
-            sesConnection.setPassword(strPassword);
+            
+            if (privkey == null)
+                sesConnection.setPassword(strPassword);
             // UNCOMMENT THIS FOR TESTING PURPOSES, BUT DO NOT USE IN PRODUCTION
             sesConnection.setConfig("StrictHostKeyChecking", "no");
             sesConnection.connect(intTimeOut);
