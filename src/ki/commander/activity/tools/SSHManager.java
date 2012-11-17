@@ -7,13 +7,11 @@ package ki.commander.activity.tools;
 import android.util.Log;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
-import com.jcraft.jsch.IdentityRepository;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
 import ki.commander.C;
 
 /**

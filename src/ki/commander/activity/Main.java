@@ -30,12 +30,9 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jcraft.jsch.ChannelExec;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
-import java.io.IOException;
-import java.io.InputStream;
+import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.List;
 import java.util.Random;
 import ki.commander.C;
@@ -134,20 +131,51 @@ public class Main extends ListActivity
         {
             Command command = paramss[0];
             
-            SSHManager instance = new SSHManager(command.getLoginUsername(), command.getLoginPassword(), command.getTarget(), "");
-            String errorMessage = instance.connect();
-            if (errorMessage != null)
+            switch (command.getType())
             {
-                Log.e(C.PACKAGE, errorMessage);
-                return false;
+                case ssh:
+                    SSHManager instance = null;
+                    switch (command.getAuth())
+                    {
+                        case login:
+                            instance = new SSHManager(command.getLoginUsername(), command.getLoginPassword(), command.getTarget(), "");
+                            break;
+                        case privatekey:
+                            instance = new SSHManager(command.getLoginUsername(), command.getPrivateKeyLocation().getAbsolutePath(), command.getPrivateKeyPassphrase(), command.getTarget(), "");
+                            break;
+                    }
+                    
+                    if (instance == null)
+                        return false; 
+                    
+                    String errorMessage = instance.connect();
+                    if (errorMessage != null)
+                    {
+                        Log.e(C.PACKAGE, errorMessage);
+                        return false;
+                    }
+
+                    Log.i(C.PACKAGE, "Command execution: "+command.getCommandString());
+                    String result = instance.sendCommand(command.getCommandString());
+                    instance.close();
+                    Log.i(C.PACKAGE, "Command response: "+result);
+                    break;
             }
 
-            Log.i(C.PACKAGE, "Command execution: "+command.getCommandString());
-            String result = instance.sendCommand(command.getCommandString());
-            instance.close();
-            Log.i(C.PACKAGE, "Command response: "+result);
-
             return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result)
+        {
+            Main.this.runOnUiThread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    Toast.makeText(Main.this, R.string.command_executed, Toast.LENGTH_LONG);
+                }
+            });
         }
     }
 }

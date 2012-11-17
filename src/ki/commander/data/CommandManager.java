@@ -72,7 +72,7 @@ public class CommandManager
             reload();
         synchronized(COMMANDS_LOCK)
         {
-            return new ArrayList<Command>(commands);
+            return commands == null ? null : new ArrayList<Command>(commands);
         }
     }
 }
