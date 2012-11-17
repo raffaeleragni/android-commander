@@ -5,7 +5,7 @@
 
     <groupId>ki.commander</groupId>
     <artifactId>commander</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1</version>
     <packaging>apk</packaging>
     <name>commander</name>
 
