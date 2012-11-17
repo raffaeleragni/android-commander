@@ -45,6 +45,12 @@ public class Command
     private String loginUsername;
     private String loginPassword;
 
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+
     public Type getType()
     {
         return type;

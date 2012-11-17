@@ -18,7 +18,7 @@
  */
 package ki.commander.data;
 
-import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,14 +37,22 @@ public class CommandManager
     
     private static List<Command> commands = null;
     
-    public static void reload(Context ctx)
+    /**
+     * After calling reload, a new getCommands() must be issued.
+     * The old array won't be cleared unless by GC.
+     */
+    public static void reload()
     {
+        File directory = new File(Environment.getExternalStorageDirectory(), "commander");
+        if (!directory.exists())
+            directory.mkdirs();
+        
         synchronized(COMMANDS_LOCK)
         {
-            File file = null;
+            File file = new File(directory, "commander.xml");
             try
             {
-                commands = CommandXMLReader.reload(new FileInputStream(file), file.getParentFile());
+                commands = CommandXMLReader.reload(new FileInputStream(file), directory);
             }
             catch (FileNotFoundException ex)
             {
@@ -60,6 +68,8 @@ public class CommandManager
      */
     public static List<Command> getCommands()
     {
+        if (commands == null)
+            reload();
         synchronized(COMMANDS_LOCK)
         {
             return new ArrayList<Command>(commands);

@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Main</string>
+    <string name="app_name">Commander</string>
+    <string name="dialog_confirmation_title">Confirmation</string>
+    <string name="dialog_confirmation_text">Confirm the command \'%s\'?</string>
+    <string name="dialog_confirmation_sum_text">What is the result of \'%1$d + %2$d\'?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
 </resources>

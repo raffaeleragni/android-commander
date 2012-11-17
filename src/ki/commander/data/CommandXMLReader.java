@@ -104,6 +104,8 @@ public class CommandXMLReader
             if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String tagName = parser.getName();
+            parser.next();
+            
             if ("name".equals(tagName))
                 result.setName(parser.getText());
             else if ("description".equals(tagName))
@@ -125,8 +127,8 @@ public class CommandXMLReader
             else if ("login-password".equals(tagName))
                 result.setLoginPassword(parser.getText());
             
-            // Every tag here can only have a text node, no childs.
-            skip(parser);
+            
+            parser.next();
         }
         
         return result;
