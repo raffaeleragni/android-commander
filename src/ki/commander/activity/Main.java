@@ -166,14 +166,8 @@ public class Main extends ListActivity
         @Override
         protected void onPostExecute(Boolean result)
         {
-            Main.this.runOnUiThread(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    Toast.makeText(Main.this, R.string.command_executed, Toast.LENGTH_LONG);
-                }
-            });
+            if (result)
+                Toast.makeText(Main.this, R.string.command_executed, Toast.LENGTH_LONG);
         }
     }
 }

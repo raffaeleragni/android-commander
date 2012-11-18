@@ -1,4 +1,6 @@
 
+Initial ideas:
+
 * Loading a list of command/sets from xml user-defined, from SD card. Define XSD.
 * Visualize list of commands to be executed.
 * Commands markable with a level of risk (0, 1, 2) each level over 0 will prompt a message for confirmation
@@ -8,3 +10,10 @@
 * Command multitasking/multimonitoring with fragments/tabs.
 * Define private keys placement/access/passphrases from XML.
 * Why XML & plain dirs: backuppable and developable profiles from computer, no data entry form android.
+
+
+V1.0
+
+* Batch command execution
+* No result provided
+* Protocol SSH, either login or private key.
